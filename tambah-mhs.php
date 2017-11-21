@@ -1,21 +1,23 @@
 <?php
-  // include '../koneksi.php';
+  include 'koneksi.php';
   // session_start();
   // if (isset($_SESSION['user'])) {
-    // if (isset($_POST['submit'])) {
-    //   $nim      = $_POST['nim'];
-    //   $nama     = $_POST['nama'];
-    //   $fakultas = $_POST['fakultas'];
-    //   $status   = $_POST['status'];
-    //   $input = "INSERT INTO mahasiswa VALUES('$nim', '$nama', '$fakultas','$status')";
-    //   $query_input =mysql_query($input);
-    //   if($query_input){
-    //     header("location: mhs.php");
-    //     }
-    //     else {
-    //     echo "<script>alert('NIM Anda sudah terdaftar.');window.location='tambah-mhs.php';</script>";
-    //     }
-    // }
+  //   if (isset($_POST['submit'])) {
+  //     $nim      = $_POST['nim'];
+  //     $nama     = $_POST['nama'];
+  //     $fakultas = $_POST['fakultas'];
+  //     $status   = $_POST['status'];
+  //     $input = "INSERT INTO mahasiswa VALUES('$nim', '$nama', '$fakultas','$status')";
+  //     $query_input =mysql_query($input);
+  //     if($query_input){
+  //       header("location: mhs.php");
+  //       }
+  //       else {
+  //       echo "<script>alert('NIM Anda sudah terdaftar.');window.location='tambah-mhs.php';</script>";
+  //       }
+  //   }
+
+  $sqltampil = mysql_query("SELECT * FROM partai");
 ?>
 
 <?php
@@ -98,9 +100,9 @@
     </head>
 
     <body>
-      <?php //include 'header.php'; ?>
+      <?php include 'header.php'; ?>
 
-      <?php //include 'nav.php'; ?>
+      <?php include 'nav.php'; ?>
 
       <div style="height:100%;">
         <div>
@@ -111,6 +113,12 @@
           <div class="section">
             <div class="row">
 
+              <select name="" id="">
+                <option value="1">test</option>
+                <option value="2">test</option>
+                <option value="3">test</option>
+                <option value="4">test</option>
+              </select>
               <form class="col s12" action="tambah-mhs.php" method="POST" enctype="multipart/form-data" name="tbl_mhs">
                 <div class="row">
                   <div class="input-field col s8 m6">
