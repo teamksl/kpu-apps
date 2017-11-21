@@ -1,3 +1,7 @@
+<?php
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +68,7 @@
       </script>
 </head>
 <body>
-    <form class="col s12" action="tambah-mhs.php" method="POST" enctype="multipart/form-data" name="tbl_mhs">
+    <form class="col s12" action="test.php" method="POST" enctype="multipart/form-data" name="tbl_mhs">
             <div class="row">
                 <div class="input-field col s8 m6">
                 <input id="nim" type="text" name="nim" class="validate" onkeyup="lihat()" onkeypress="return isNumberKey(event)" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
@@ -83,12 +87,6 @@
                 </div>
             </div>
             </div>
-            <div class="row">
-                <div class="input-field col s8 m4">
-
-                    <input id="status" type="text" name="status" value="0" class="validate" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
-
-                </div>
             </div>
 
     <!-- <input type="file" name="file"> -->
