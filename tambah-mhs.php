@@ -1,32 +1,22 @@
 <?php
   include 'koneksi.php';
-  // session_start();
-  // if (isset($_SESSION['user'])) {
-  //   if (isset($_POST['submit'])) {
-  //     $nim      = $_POST['nim'];
-  //     $nama     = $_POST['nama'];
-  //     $fakultas = $_POST['fakultas'];
-  //     $status   = $_POST['status'];
-  //     $input = "INSERT INTO mahasiswa VALUES('$nim', '$nama', '$fakultas','$status')";
-  //     $query_input =mysql_query($input);
-  //     if($query_input){
-  //       header("location: mhs.php");
-  //       }
-  //       else {
-  //       echo "<script>alert('NIM Anda sudah terdaftar.');window.location='tambah-mhs.php';</script>";
-  //       }
-  //   }
+    if (isset($_POST['submit'])) {
+      $partai   = $_POST['pilih_partai'];  
+      $nim      = $_POST['nim'];
+      $nama     = $_POST['nama'];
+      $fakultas = $_POST['fakultas'];
+      $input = "INSERT INTO pemilih VALUES('$nim', '$nama', '$fakultas','$partai')";
+      $query_input =mysql_query($input);
+      if($query_input){
+        header("location: mhs.php");
+        }
+        else {
+        echo "<script>alert('NIM Anda sudah terdaftar.');window.location='tambah-mhs.php';</script>";
+        }
+      }  
 
   $sqltampil = mysql_query("SELECT * FROM partai");
-?>
-
-<?php
-// if (isset($_POST['simpan'])) {
-//     $nim = $_POST['mimin'];
-//     $homepage = file_get_contents("https://student.budiluhur.ac.id/kpu.php?nim=$nim");
-//   echo $homepage;
-//   }  
-?>  
+?> 
 
  <!DOCTYPE html>
   <html>
@@ -39,7 +29,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-      <script language="javascript" src="jquery-2.1.1.min.js.js"></script>
+      <script language="javascript" src="js/jquery.js"></script>
       <script language="javascript">
 
       function lihat() {
@@ -82,7 +72,6 @@
               var jur = "";
               document.tbl_mhs.fakultas.value=jur;
            }
-
       }
 
       function isNumberKey(evt)
@@ -102,8 +91,6 @@
     <body>
       <?php include 'header.php'; ?>
 
-      <?php include 'nav.php'; ?>
-
       <div style="height:100%;">
         <div>
           <h5 class="center-align">Tambah Data Mahasiswa</h5>
@@ -113,21 +100,49 @@
           <div class="section">
             <div class="row">
 
-              <select name="" id="">
-                <option value="1">test</option>
-                <option value="2">test</option>
-                <option value="3">test</option>
-                <option value="4">test</option>
-              </select>
+            <form class="col s12" action="tambah-mhs.php" method="POST" enctype="multipart/form-data" name="cek_mhs">
+              <div class="row">
+                  <div class="input-field col s8 m6">
+                    <input id="nim" type="text" name="mimin" class="validate" onkeypress="return isNumberKey(event)" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
+                    <tr>
+                      <td>
+                      <?php
+                          if (isset($_POST['simpan'])) {
+                             $nim = $_POST['mimin'];
+                             $homepage = file_get_contents("https://student.budiluhur.ac.id/kpu.php?nim=$nim");
+                             echo $homepage; 
+                              }  
+                            ?>
+                      </td>
+                    </tr>
+                    <label for="nim">NIM</label>
+                    <br>
+                    <button class="btn waves-effect waves-light" type="submit" name="simpan">CEK</button>
+                  </div>
+                </div>
+            </form>
+
               <form class="col s12" action="tambah-mhs.php" method="POST" enctype="multipart/form-data" name="tbl_mhs">
                 <div class="row">
-                  <div class="input-field col s8 m6">
+                  <div class="col s8">
+                  <select name="pilih_partai" id="pilih_partai">
+                    <option disabled selected>Pilih Partai</option>
+                    <?php if (mysql_num_rows($sqltampil) > 0 ) { ?>
+                      <?php while($row = mysql_fetch_array($sqltampil)) {?>
+                        <option value="<?php echo $row['id_partai'] ?>"><?php echo $row['nama_partai'] ?></option>
+                        <?php } ?>
+                      <?php } ?>
+                  </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6 m6">
                     <input id="nim" type="text" name="nim" class="validate" onkeyup="lihat()" onkeypress="return isNumberKey(event)" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
                     <label for="nim">NIM</label>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-field col s12 m12">
+                  <div class="input-field col s8 ">
                     <input id="nama" type="text" name="nama" class="validate" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
                     <label for="nama">Nama Mahasiswa</label>
                   </div>
@@ -142,7 +157,7 @@
         <!-- <input type="file" name="file"> -->
         <div class="row">
           <div class="col s12">
-            <a href="mhs.php" class="btn waves-effect waves-light" name="batal">Batal</a>
+            <a href="tambah-mhs.php" class="btn waves-effect waves-light" name="batal">Batal</a>
       	    <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan</button>
           </div>
         </div>
@@ -174,8 +189,3 @@
 	</body>
   </html>
 
-  <?php
-  //   } else {
-  //   header("location: mhs.php");
-  // }
-  ?>

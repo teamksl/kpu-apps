@@ -1,5 +1,5 @@
 <?php
-	include '../koneksi.php';
+	include '../../koneksi.php';
 	include 'header.php';
 ?>
 
@@ -21,7 +21,7 @@
 												<label class="col-md-2 form-control-label" for="text-input">Pilih Partai</label>
 												<div class="col-md-2">
 													<select id="partai" name="partai" class="form-control">
-														<option>Pilih Partai</option>
+														<option disabled selected>Pilih Partai</option>
 														<?php
 															$get = mysql_query("SELECT DISTINCT partai FROM pemilih ORDER BY partai");
 															if(mysql_num_rows($get) != 0){
