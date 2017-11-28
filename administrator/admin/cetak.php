@@ -18,10 +18,10 @@
 							<div>
 								<?php
 									$partai = $_POST['partai'];
-									$get = mysql_query("SELECT * FROM pemilih WHERE partai='$partai'");
+									$get = mysql_query("SELECT * FROM partai WHERE id_partai='$partai'");
 									$row = mysql_fetch_array($get)
 								?>
-								<span style="margin-left: 120px"><b>Nama Partai : <?php echo $row['partai']; ?></b></span>
+								<span style="margin-left: 120px"><b>Nama Partai : <?php echo $row['nama_partai']; ?></b></span>
 								<br />
 								<br />
 								<table width="700px" border="1" cellspacing="0" align="center">
@@ -35,7 +35,7 @@
 										<?php
 											$no = 1;
 											$partai = $_POST['partai'];
-											$get = mysql_query("SELECT * FROM pemilih WHERE partai='$partai'");
+											$get = mysql_query("SELECT * FROM pemilih WHERE id_partai='$partai'");
 											while ($row=mysql_fetch_array($get)) {
 										?>
 										<td align="center"><?php echo $no++; ?></td>

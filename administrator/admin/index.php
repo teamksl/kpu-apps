@@ -1,9 +1,9 @@
 <?php
-	include '../../koneksi.php';
-	include 'header.php';
-
+	
 	session_start();
 	if (isset($_SESSION['login_user'])) {
+		include '../../koneksi.php';
+		include 'header.php';
 ?>
 			<div id="page-wrapper">
 				<div class="row">
@@ -33,7 +33,7 @@
 											<tbody>
 												<?php
 													$no = 1;
-													$query = mysql_query('SELECT * FROM pemilih');
+													$query = mysql_query('SELECT nim,nama,fakultas,nama_partai FROM pemilih LEFT JOIN partai ON pemilih.id_partai = partai.id_partai ');
 													while ($row = mysql_fetch_array($query)) {
 												?>
 												
@@ -42,7 +42,7 @@
 													<td><?php echo $row['nim']; ?></td>
 													<td><?php echo $row['nama']; ?></td>
 													<td><?php echo $row['fakultas']; ?></td>
-													<td><?php echo $row['partai'];?></td>
+													<td><?php echo $row['nama_partai'];?></td>
 												</tr>
 												
 												<?php
@@ -142,8 +142,7 @@
 	</body>
 </html>
 <?php
-    }
-  else {
+    } else {
     header("location: ../index.php");
   }
   ?>

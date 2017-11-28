@@ -23,10 +23,10 @@
 													<select id="partai" name="partai" class="form-control">
 														<option disabled selected>Pilih Partai</option>
 														<?php
-															$get = mysql_query("SELECT DISTINCT partai FROM pemilih ORDER BY partai");
+															$get = mysql_query("SELECT * FROM partai");
 															if(mysql_num_rows($get) != 0){
 																while($data = mysql_fetch_assoc($get)){
-																	echo '<option>'.$data['partai'].'</option>';
+																	echo '<option value = "'.$data['id_partai'].'">'.$data['nama_partai'].'</option>';
 																}
 															}
 														?>
