@@ -8,10 +8,10 @@
       $input = "INSERT INTO pemilih VALUES('$nim', '$nama', '$fakultas','$partai')";
       $query_input =mysql_query($input);
       if($query_input){
-        header("location: mhs.php");
+        header("location: index.php");
         }
         else {
-        echo "<script>alert('NIM Anda sudah terdaftar.');window.location='tambah-mhs.php';</script>";
+        echo "<script>alert('NIM Anda sudah terdaftar.');window.location='index.php';</script>";
         }
       }  
 
@@ -53,7 +53,7 @@
 
               case '42':
               case '43':
-              var jur = "Fakultas Ilmu Politik dan Ilmu Sosial";
+              var jur = "Fakultas Ilmu Sosial dan Ilmu Politik";
               document.tbl_mhs.fakultas.value=jur;
               break;
 
@@ -94,13 +94,14 @@
       <div style="height:100%;">
         <div>
           <h5 class="center-align">Tambah Data Mahasiswa</h5>
+          <a href="administrator/index.php"><button class="btn waves-effect waves-light">GO TO ADMIN</button></a>
         </div>
 
         <div class="container">
           <div class="section">
             <div class="row">
 
-            <form class="col s12" action="tambah-mhs.php" method="POST" enctype="multipart/form-data" name="cek_mhs">
+            <form class="col s12" action="index.php" method="POST" enctype="multipart/form-data" name="cek_mhs">
               <div class="row">
                   <div class="input-field col s8 m6">
                     <input id="nim" type="text" name="mimin" class="validate" onkeypress="return isNumberKey(event)" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
@@ -122,7 +123,7 @@
                 </div>
             </form>
 
-              <form class="col s12" action="tambah-mhs.php" method="POST" enctype="multipart/form-data" name="tbl_mhs">
+              <form class="col s12" action="index.php" method="POST" enctype="multipart/form-data" name="tbl_mhs">
                 <div class="row">
                   <div class="col s8">
                   <select name="pilih_partai" id="pilih_partai">
@@ -157,7 +158,7 @@
         <!-- <input type="file" name="file"> -->
         <div class="row">
           <div class="col s12">
-            <a href="tambah-mhs.php" class="btn waves-effect waves-light" name="batal">Batal</a>
+            <a href="index.php" class="btn waves-effect waves-light" name="batal">Batal</a>
       	    <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan</button>
           </div>
         </div>

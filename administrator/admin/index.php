@@ -1,6 +1,9 @@
 <?php
 	include '../../koneksi.php';
 	include 'header.php';
+
+	session_start();
+	if (isset($_SESSION['login_user'])) {
 ?>
 			<div id="page-wrapper">
 				<div class="row">
@@ -55,7 +58,7 @@
 				</div>
 				
 				<!-- Modal Pemilih -->
-				<div id="myModal" class="modal fade">
+				<!-- <div id="myModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -104,7 +107,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- jQuery -->
 		<script src="vendor/jquery/jquery.js"></script>
@@ -138,3 +141,9 @@
 		</script>
 	</body>
 </html>
+<?php
+    }
+  else {
+    header("location: ../index.php");
+  }
+  ?>
