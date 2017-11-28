@@ -21,7 +21,7 @@
  <!DOCTYPE html>
   <html>
     <head>
-      <title>E-Voting KPU - UBL 2016</title>
+      <title>E-Voting KPU - UBL 2017</title>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
