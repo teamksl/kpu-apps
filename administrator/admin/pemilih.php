@@ -1,4 +1,7 @@
 <?php
+  session_start();
+  if (isset($_SESSION['login_user'])) {
+	
 	include '../../koneksi.php';
 	include 'header.php';
 ?>
@@ -76,3 +79,8 @@
 		</script>
 	</body>
 </html>
+<?php
+    } else {
+    header("location: ../index.php");
+  }
+?>

@@ -1,4 +1,6 @@
 <?php
+session_start();
+if (isset($_SESSION['login_user'])) {
 	include '../../koneksi.php';
 	
 	$nim=$_POST['nim'];
@@ -13,4 +15,9 @@
 	}else{
 		echo "<script>alert('Data GAGAL di Simpan!');window.location='index.php';</script>";
 	}	
+?>
+<?php
+    } else {
+    header("location: ../index.php");
+  }
 ?>
